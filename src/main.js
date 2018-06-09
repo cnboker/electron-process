@@ -15,9 +15,11 @@ function sendToAllForegroundWindows(eventName, payload) {
 
 const main = {
   createBackgroundProcess(url, debug) {
-    const backgroundWindow = new BrowserWindow();
+   const backgroundWindow = new BrowserWindow({show: false});
     if (!debug) {
       backgroundWindow.hide();
+    }else{
+      backgroundWindow.webContents.openDevTools();
     }
     backgroundWindow.loadURL(url);
 
