@@ -4,7 +4,8 @@ const foregroundWindows = [];
 const backgroundProcessHandler = {
   addWindow(browserWindow) {
     foregroundWindows.push(browserWindow);
-  }
+  },
+  sendToAllForegroundWindows
 };
 
 function sendToAllForegroundWindows(eventName, payload) {
