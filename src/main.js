@@ -1,12 +1,20 @@
 const _ = require('lodash');
 const {BrowserWindow, ipcMain} = require('electron');
 const foregroundWindows = [];
+const backgroundWindows = [];
 const backgroundProcessHandler = {
   addWindow(browserWindow) {
     foregroundWindows.push(browserWindow);
   },
-  sendToAllForegroundWindows
+  sendToAllForegroundWindows,
+  sendToIPCRenderer
 };
+
+function sendToIPCRenderer(eventName, payload) {
+  _.forEach(backgroundWindows, (backgroundWindow) => {
+    backgroundWindow.webContents.send.apply(backgroundWindow.webContents, [eventName, payload]);
+  });
+}
 
 function sendToAllForegroundWindows(eventName, payload) {
   _.forEach(foregroundWindows, (foregroundWindow) => {
@@ -17,6 +25,7 @@ function sendToAllForegroundWindows(eventName, payload) {
 const main = {
   createBackgroundProcess(url, debug) {
    const backgroundWindow = new BrowserWindow({show: debug});
+   backgroundWindows.push(backgroundWindow)
     if (!debug) {
       backgroundWindow.hide();
     }else{
