@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "compile": "babel --presets es2015 -d ./build ./src",
-    "eslint": "./node_modules/.bin/eslint src",
+    "eslint": "eslint src",
     "prepublish": "babel --presets es2015 -d ./build ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,6 +38,7 @@
     "electron-prebuilt": "^0.36.4"
   },
   "dependencies": {
+    "electron-prebuilt": "^1.4.13",
     "lodash": "^4.0.0",
     "object-hash": "^1.1.0",
     "uuid": "^2.0.1"
