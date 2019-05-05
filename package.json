@@ -35,7 +35,7 @@
     "eslint": "^1.9.0"
   },
   "peerDependencies": {
-    "electron-prebuilt": "^0.36.4"
+    "electron-prebuilt": "^1.4.13"
   },
   "dependencies": {
     "electron-prebuilt": "^1.4.13",
