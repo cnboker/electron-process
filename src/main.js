@@ -33,7 +33,7 @@ const main = {
     const backgroundWindow = new BrowserWindow({
       show: debug,
       webPreferences: {
-        nodeIntegration: false
+        nodeIntegration: true
       }
     });
     backgroundWindows.push(backgroundWindow);
